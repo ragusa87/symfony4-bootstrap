@@ -45,5 +45,13 @@
 
 # If needed, you can specify your own tasks
   tasks:
+    - name: install PHP packages for Symfony
+      apt: pkg={{ item }} state=latest
+      sudo: yes
+      with_items:
+        - php{{ php_version }}-xml
+      notify: restart php-fpm
+
     - name: install project dependencies
       shell: cd {{ root_directory }} && composer.phar --quiet install
+

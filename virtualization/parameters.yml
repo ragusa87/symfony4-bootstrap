@@ -28,7 +28,7 @@ database_name: "my_project"
 
 # Root directory of your project
 root_directory: "/vagrant/"
-web_directory: "/vagrant/web"
+web_directory: "/vagrant/public"
 
 # For a PHP project, you might want to set the following
 # Default reporting level of PHP errors
@@ -40,5 +40,17 @@ php_version: "7.1"
 # If you want to use ubuntu instead of debian (or any other box),
 # uncomment this. You can also replace "base" with "php7", if you need
 # php7 (with fpm and nginx) anyway.
-box_name: "drifter/trusty64-php7"
-box_url: "https://vagrantbox-public.liip.ch/drifter-trusty64-php7.json"
+box_name: "drifter/stretch64-base"
+box_url: "https://vagrantbox-public.liip.ch/drifter-stretch64-base.json"
+
+
+php_packages:
+  - php{{ php_version_installed }}-common
+  - php{{ php_version_installed }}-cli
+  - php{{ php_version_installed }}-curl
+  - php{{ php_version_installed }}-intl
+  - php{{ php_version_installed }}-gd
+  - php{{ php_version_installed }}-sqlite3
+  - php{{ php_version_installed }}-dev
+  - php{{ php_version_installed }}-readline
+  - pkg-config

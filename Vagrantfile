@@ -31,6 +31,7 @@ class CustomConfig
   attr_accessor :extra_vars      # extra variables to pass to Ansible
 
   attr_accessor :forwarded_ports # Port that need to be forwarded
+  attr_accessor :synced_folder_type # Type of synced folder to use
 
   # Retrieve the values of 'virtualization/parameters.yml' so that
   # they can be used by Vagrant. If you need to change those values
@@ -52,7 +53,8 @@ class CustomConfig
     @extra_vars    = {}
 
     @forwarded_ports = config['forwarded_ports'] || nil
-  end
+    @synced_folder_type = config['synced_folder_type'] || "nfs"
+end
 
   # Getter that first check if the accessor exists on the class and if
   # the value is not null before returning it.
